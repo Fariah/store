@@ -1,30 +1,31 @@
-var express = require('express');
+var express         = require('express');
+var actions    = require(".././controllers/topicController");
+
+//почему тут undefined а в контроллере JSON?
+console.log(actions.getAll());
+
 var router = express.Router();
 
-// middleware specific to this router
-//router.use(function timeLog(req, res, next) {
-//    console.log('Time: ', Date.now());
-//    next();
-//})
 
 router.get('/topic', function (req, res) {
-    res.status(200).send('Get all topics');
+
+    res.status(200).send(actions.getAll());
 });
 
 router.get('/topic/:id', function(req, res){
-    res.status(200).send('Get topic ' + req.params.id);
+    res.status(200).send(actions.getTopic(req.params.id));
 });
 
 router.post('/topic', function (req, res) {
-    res.status(201).send('Create topic');
+    res.status(201).send(actions.createTopic({"title": "topic_title"}));
 });
 
 router.put('/topic/:id', function (req, res) {
-    res.status(200).send('Update topic ' + req.params.id);
+    res.status(200).send(actions.updateTopic(req.params.id));
 });
 
 router.delete('/topic/:id', function (req, res) {
-    res.status(200).send('Delete topic ' + req.params.id);
+    res.status(200).send(actions.deleteTopic(req.params.id));
 });
 
 module.exports = router;
