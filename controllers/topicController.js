@@ -1,20 +1,17 @@
 var Topic = require(".././models/topic").Topic;
 
-function topicActions() {
-};
+var topicActions = function() {};
 
 topicActions.prototype.getAll = function() {
-
+    var topicList = {};
     Topic.find({}, function(err, topics) {
-        var topicList = {};
-
         topics.forEach(function(topic) {
             topicList[topic._id] = topic;
         });
 
-        console.log(topicList);
-        return topicList;
     });
+    console.log(topicList);
+    return topicList;
 
 };
 

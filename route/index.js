@@ -1,14 +1,10 @@
 var express         = require('express');
 var actions    = require(".././controllers/topicController");
 
-//почему тут undefined а в контроллере JSON?
-console.log(actions.getAll());
-
 var router = express.Router();
 
 
 router.get('/topic', function (req, res) {
-
     res.status(200).send(actions.getAll());
 });
 
