@@ -17,4 +17,8 @@ var schema = new Schema({
     }
 });
 
+schema.statics.checkId = function(id, cb) {
+    return this.findById(id, cb);
+};
+
 exports.Topic = mongoose.model('Topic', schema);
