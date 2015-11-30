@@ -7,11 +7,15 @@ var http = require("http");
 var config = require("./config");
 var log = require("./lib/log")(module);
 var route = require("./route");
+var expressValidator = require('express-validator');
 
 var app = express();
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
+
+//validator
+app.use(expressValidator());
 
 // parse application/json
 app.use(bodyParser.json());
